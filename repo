@@ -1,0 +1,41 @@
+#!/bin/sh
+LOCALE=da
+
+# SETUP repo AURORA
+REPO=aurora
+echo " "
+echo "[[[ Setting up repository $REPO ]]]"
+echo "----- Fetching locale: $LOCALE "
+hg clone http://hg.mozilla.org/releases/l10n/mozilla-$REPO/$LOCALE $LOCALE-$REPO
+
+echo " "
+echo "----- Fetching the mozilla repo for $REPO "
+#hg clone http://hg.mozilla.org/releases/mozilla-$REPO	$REPO
+
+echo " "
+echo "----- Setting up hgrc for $LOCALE on $REPO "
+HGRC=$LOCALE-$REPO/.hg/hgrc
+echo "[paths]" > $HGRC
+echo "default      = http://hg.mozilla.org/releases/l10n/mozilla-$REPO/$LOCALE" >> $HGRC
+echo "default-push =  ssh://hg.mozilla.org/releases/l10n/mozilla-$REPO/$LOCALE" >> $HGRC
+
+
+# SETUP repo BETA
+REPO=beta
+echo " "
+echo "[[[ Setting up repository $REPO ]]]"
+echo "----- Fetching locale: $LOCALE "
+hg clone http://hg.mozilla.org/releases/l10n/mozilla-$REPO/$LOCALE $LOCALE-$REPO
+
+echo " "
+echo "----- Fetching the mozilla repo for $REPO "
+#hg clone http://hg.mozilla.org/releases/mozilla-$REPO	$REPO
+
+echo " "
+echo "----- Setting up hgrc for $LOCALE on $REPO "
+HGRC=$LOCALE-$REPO/.hg/hgrc
+echo "[paths]" > $HGRC
+echo "default      = http://hg.mozilla.org/releases/l10n/mozilla-$REPO/$LOCALE" >> $HGRC
+echo "default-push =  ssh://hg.mozilla.org/releases/l10n/mozilla-$REPO/$LOCALE" >> $HGRC
+
+
